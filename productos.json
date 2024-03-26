@@ -1,0 +1,5 @@
+[
+    { "codigo": 1, "nombre": "Leche", "proveedor": "Lechería ABC", "descripcion": "Leche entera", "categoria": "Lácteos", "existencia": 20, "precio": 2.50 },
+    { "codigo": 2, "nombre": "Pan", "proveedor": "Panadería XYZ", "descripcion": "Pan blanco", "categoria": "Panadería", "existencia": 30, "precio": 1.00 },
+    { "codigo": 3, "nombre": "Manzanas", "proveedor": "Frutas del Valle", "descripcion": "Manzanas frescas", "categoria": "Frutas", "existencia": 3, "precio": 0.75 }
+]

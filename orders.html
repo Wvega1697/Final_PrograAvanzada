@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realizar Pedido</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Realizar Pedido</h2>
+        <form id="order-form">
+            <label for="product-code">Código de Producto:</label>
+            <input type="text" id="product-code" name="product-code" readonly>
+            <label for="product-name">Nombre del Producto:</label>
+            <input type="text" id="product-name" name="product-name" readonly>
+            <label for="product-supplier">Proveedor:</label>
+            <input type="text" id="product-supplier" name="product-supplier" readonly>
+            <label for="quantity">Cantidad:</label>
+            <input type="number" id="quantity" name="quantity">
+            <button type="submit">Confirmar Pedido</button>
+            <button type="button" id="cancel-btn">Cancelar</button>
+        </form>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Función para cargar los datos del producto y proveedores
+        function cargarDatosProducto() {
+            // Obtener el código de producto de la URL (supongamos que está en un parámetro llamado 'id')
+            const urlParams = new URLSearchParams(window.location.search);
+            const productCode = urlParams.get('id');
+            
+            // Obtener el producto de la lista de productos
+            const producto = supermercado.obtenerProductoPorCodigo(productCode);
+
+            // Verificar si se encontró el producto
+            if (producto) {
+                // Llenar los campos del formulario con los datos del producto
+                document.getElementById("product-code").value = producto.codigo;
+                document.getElementById("product-name").value = producto.nombre;
+                document.getElementById("product-supplier").value = producto.proveedor;
+                document.getElementById("quantity").value = 1; // Por defecto, establecer cantidad en 1
+            } else {
+                // Mostrar un mensaje de error si no se encontró el producto
+                alert("El producto especificado no fue encontrado.");
+                // Redirigir a la lista de productos
+                window.location.href = 'product_list.html';
+            }
+        }
+
+
+        // Manejo del formulario de pedido
+        document.getElementById("order-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // Obtener los valores del formulario
+            const productCode = document.getElementById("product-code").value;
+            const productName = document.getElementById("product-name").value;
+            const productSupplier = document.getElementById("product-supplier").value;
+            const quantity = document.getElementById("quantity").value;
+
+            // Llamar al método para realizar el pedido
+            const resultado = supermercado.realizarPedido(productCode, quantity);
+            
+            // Mostrar mensaje de éxito o error
+            alert(resultado);
+        });
+
+        // Manejo del botón de cancelar
+        document.getElementById("cancel-btn").addEventListener("click", function() {
+            // Redirigir a la lista de productos
+            window.location.href = 'product_list.html';
+        });
+
+        // Cargar datos del producto al cargar la página
+        window.onload = cargarDatosProducto;
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Lista de Productos</h2>
+        <table id="product-table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Proveedor</th>
+                    <th>Descripción</th>
+                    <th>Categoría</th>
+                    <th>Existencia</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="product-list">
+                <!-- Los productos se cargarán dinámicamente aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Llamar al método para cargar la lista de productos
+        window.onload = function() {
+            supermercado.cargarListaProductos();
+        };
+    </script>
+</body>
+</html>
