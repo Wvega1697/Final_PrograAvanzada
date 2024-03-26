@@ -1,3 +1,7 @@
+-- Creación de la base de datos
+CREATE DATABASE IF NOT EXISTS gestion_inventario;
+USE gestion_inventario;
+
 -- Creación de la tabla de usuarios
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
